@@ -1,0 +1,18 @@
+@charset "ISO-8859-1";
+h1 {
+    color: blue;
+}
+
+
+.tim{
+    position: absolute;
+    display: flex;
+    margin: auto;
+    width: 80%;
+    height: 100%;
+    font-size: 29px;
+    padding: 5px;
+    justify-content: space-around;
+    align-content: space-between;
+    align-items: center;
+}
