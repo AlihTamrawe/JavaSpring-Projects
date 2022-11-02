@@ -81,6 +81,13 @@
 		</c:forEach>
 		</div>
 			</div>
+			
+			<div class="col-3">
+			<form action="/reset" method="post">
+			    	<button class="btn btn-primary ">Reset</button>
+			    	</form>
+			
+			</div>
 	
 
 </body>

@@ -32,6 +32,21 @@ public class NinjaGoldApplication {
 		
 		return "redirect:/gold";
 	}
+	
+	@PostMapping("/reset")	
+	public String resets( RedirectAttributes redirectAttributes) {
+		
+		list = new ArrayList<String>();
+		list2 = new ArrayList<String>();
+		this.setGold(0);
+		
+		
+
+		
+		
+		return "redirect:/gold";
+	}
+	
 	@RequestMapping("/gold")
 	public String show(Model model) {
 		model.addAttribute("list", list);
@@ -92,21 +107,30 @@ public class NinjaGoldApplication {
 		
 		String style="green";
 		Random rand = new Random();
-		int ran = rand.nextInt(1);
+		int ran = rand.nextInt(2)-1;
 		int num =0;
 		if(ran==0) {
-			num=0;
+			num=-50;
 					
 		}
 		else {
 			num=50;
 		}
-		this.setGold(num+this.getGold());
+		if(num+this.getGold()>0) {
+			this.setGold(num+this.getGold());
+
+		}
+		else
+		{
+			this.setGold(0);
+
+		}
 		LocalDateTime l = LocalDateTime.now();
 		
 		
-		if(num==0) {
-			list2.add("You lost a Quest and earned "+num+" gold.  "+l);			
+		if(num==-50) {
+			
+			list2.add("You failed a Quest and lost "+num*-1+" gold.  Ouch"+l);			
 
 		}
 		else {
