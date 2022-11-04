@@ -29,21 +29,10 @@ public class TravelController {
 		this.travelService = travelService;
 	}
 	
-	@RequestMapping("/Expense")
-    public String mainone(Model model) throws IOException  {
-		 ArrayList<Travel>  tra = (ArrayList<Travel>) travelService.allTravel();
-	       
-	        model.addAttribute("travels", tra);
-	       
-	        
-	        
-	        return "/Travel/expense.jsp";
-        
-         
-         }
+	
 	
 	 @GetMapping("/Expense/New")
-    public String all(Model model,@ModelAttribute("expensess") Travel travel,BindingResult result)  throws IOException  {
+    public String all(Model model,@ModelAttribute("expensess") Travel travel)  throws IOException  {
 		
        
 		 ArrayList<Travel>  tra = (ArrayList<Travel>) travelService.allTravel();
@@ -54,14 +43,18 @@ public class TravelController {
     }
 	 
 	@PostMapping("/Travel")
-    public String CreateTravel(Model model,@ModelAttribute("expensess") Travel travel,BindingResult result) throws IOException  {
-        
+    public String CreateTravel(Model model,@Valid @ModelAttribute("expensess") Travel travel,BindingResult result)   {
+		 
+		 ArrayList<Travel>  tra = (ArrayList<Travel>) travelService.allTravel();
+	       
+	        model.addAttribute("travels", tra);
          if (result.hasErrors()) {
-             return "redirect:/Travel/New";
+             return "/Travel/expense.jsp";
          } else {
              travelService.createTravel(travel);
+             return "redirect:/Expense/New";
          }   
-         return "redirect:/Expense";
+        
 
          
          }

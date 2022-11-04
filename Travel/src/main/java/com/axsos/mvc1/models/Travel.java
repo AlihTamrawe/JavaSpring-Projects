@@ -26,19 +26,19 @@ public class Travel {
 	 	
 	 	
 	 	@NotNull
-	    @Size(min = 5, max = 200, message="expense must be at least 3 characters.")
+	    @Size(min = 5, max = 200, message="expense must be at least 5 characters.")
 	    private String expense;
 	 	
 	 	
-	 	@Size(min = 3, max = 40, message="Language must be at least 3 characters.")
+	 	@Size(min = 3, max = 40, message="vendor must be at least 3 characters.")
 	    private String vendor;
 	 	
 	 	@NotNull
-	 	@Min(value=1, message="Must be at least 100 pages.")
+	 	@Min(value=1, message="Must be at least 1$.")
 	 	private long amount;
 	 	
 	 	@NotNull
-	    @Size(min = 5, max = 200, message="description must be at least 3 characters.")
+	    @Size(min = 5, max = 200, message="description must be at least 2 characters.")
 	    private String description;
 	 	
 	 	 @Column(updatable=false)
