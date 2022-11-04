@@ -6,18 +6,25 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Your book </title>
+        <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
+
 </head>
 <body>
+	<main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" `>
+		<div class="card">
+			<h1>Title:  <c:out value="${title}"></c:out> </h1>
+				<p>Description : <c:out value="${desc}"></c:out> </p>
+				<p>Language : <c:out value="${lang}"></c:out> </p>
+				<p> Number OF Pages :<c:out value="${pages}"></c:out> </p>
+				
+			
+			</div>
 
-<div>
-	<h1> <c:out value="${title}"></c:out> </h1>
-		<p> <c:out value="${desc}"></c:out> </p>
-		<p> <c:out value="${lang}"></c:out> </p>
-		<p> <c:out value="${pages}"></c:out> </p>
-		
-	
-</div>
-
+					<form class="form" action="/books/" method="get">
+			   			 	<button class="btn btn-primary ">Back</button>
+			    	</form>
+			    	
+	</main>
 </body>
 </html>

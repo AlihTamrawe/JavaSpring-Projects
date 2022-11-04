@@ -1,6 +1,7 @@
 package com.axsos.mvc.controllers;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -33,6 +34,15 @@ public class BookController {
 
         }
         return "show.jsp";
+    }
+	@RequestMapping("/books")
+    public String all(Model model) throws IOException  {
+		 ArrayList<Book>  books = (ArrayList<Book>) bookService.allBooks();
+       
+        model.addAttribute("books", books);
+       
+        
+        return "all.jsp";
     }
     
 

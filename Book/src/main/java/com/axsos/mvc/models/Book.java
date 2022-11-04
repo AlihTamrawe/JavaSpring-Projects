@@ -11,7 +11,11 @@ import javax.persistence.Table;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
 @Table(name="books")
 public class Book {
@@ -20,6 +24,9 @@ public class Book {
     private Long id;
     public Long getId() {
 		return id;
+	}
+    public String getId2() {
+		return ""+id;
 	}
 	public void setId(Long id) {
 		this.id = id;
@@ -97,6 +104,10 @@ public class Book {
     protected void onUpdate(){
         this.updatedAt = new Date();
     }
-    
+//    @Modifying
+//    @Query("update Book u set u.title = ?2, u.description = ?3,u.language = ?4 , u.numberOfPages = ?5 where u.id = ?1")
+//    void updateall(Long id,String title,String desc,String lang,int numOfPages) {
+//    	
+//    }
     
 }

@@ -48,10 +48,19 @@ public class BooksApi {
         response.sendRedirect("/showdelete");
         
     }
+    @RequestMapping(value="/api/books/{id}", method=RequestMethod.PUT)
+    public String Update(@PathVariable("id") Long id ,@RequestParam(value="title") String title, @RequestParam(value="description") String desc, @RequestParam(value="language") String lang, @RequestParam(value="pages") Integer numOfPages) throws IOException {
+       
+    
+        
+        
+        return bookService.Updatedtitle(id,title)+bookService.Updateddesc(id, desc)+bookService.Updatedlanguage(id, lang)+bookService.Updatedpages(id, numOfPages); 
+        }
     
     @RequestMapping("/showdelete")
     public String show() {
      
         return "Delete it successufully";
     }
+    
 }
