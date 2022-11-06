@@ -17,8 +17,8 @@
 <body>
 		<h1>Edit Book</h1>
 		<main>
-<form:form action="/Expense/edit/${travel.getId()}" method="put" modelAttribute="travel">
-    <input type="hidden" name="_method" value="put">
+<form:form action="/Expense/${id}/edit" method="post" modelAttribute="travel">
+    <input type="hidden" name="_method" value="put" >
     <p>
         <form:label path="expense">expense</form:label>
         <form:errors path="expense"/>
@@ -42,7 +42,7 @@
     <input class="btn btn-primary " type="submit" value="Submit"/>
 </form:form>
 </main>
-	<form class="form " action="/Expense/New" >
+	<form class="form" action="/Expense/New" >
 			   			 	<button class="btn btn-primary ">Back</button>
 			    	</form>
 </body>

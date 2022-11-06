@@ -26,7 +26,7 @@ import com.axsos.mvc1.services.TravelService;
 @Controller
 public class TravelController {
 	private final TravelService travelService;
-	
+	private boolean f=false;
 	
 	public TravelController(TravelService travelService) throws IOException {
 		this.travelService = travelService;
@@ -65,22 +65,28 @@ public class TravelController {
 	    public String edit(@PathVariable("id") Long id, Model model) {
 	        Travel tra = travelService.findTravel(id);
 	        model.addAttribute("travel", tra);
+			model.addAttribute("id",id);
+
             return "/Travel/edit.jsp";
 	    }
 	
-	 @PutMapping("/Expense/edit/{id}")
+	 @PutMapping("/Expense/{id}/edit")
     public String editTravel(Model model,@Valid @ModelAttribute("travel") Travel travel,BindingResult result,@PathVariable("id") Long id) throws IOException   {
-	        model.addAttribute("travel",travel);
+	       
+		 model.addAttribute("travel",travel);
+		 model.addAttribute("id",id);
+
 		  
          if (result.hasErrors()) {
-        	
+        	 
              return "/Travel/edit.jsp";
          } else {
+        	 travelService.Updated(id, travel);
           
-             travelService.Updatedexpense(id, travel.getExpense());
-             travelService.Updateddesc(id, travel.getDescription());
-             travelService.Updatedamount(id, travel.getAmount());
-             travelService.Updatedvendor(id, travel.getVendor());
+//             travelService.Updatedexpense(id, travel.getExpense());
+//             travelService.Updateddesc(id, travel.getDescription());
+//             travelService.Updatedamount(id, travel.getAmount());
+//             travelService.Updatedvendor(id, travel.getVendor());
              return "redirect:/Expense/New";
          }   
         

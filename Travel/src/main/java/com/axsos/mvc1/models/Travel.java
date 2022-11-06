@@ -35,7 +35,7 @@ public class Travel {
 	 	
 	 	@NotNull
 	 	@Min(value=1, message="Must be at least 1$.")
-	 	private long amount;
+	 	private Double amount;
 	 	
 	 	@NotNull
 	    @Size(min = 5, max = 200, message="description must be at least 2 characters.")
@@ -49,7 +49,7 @@ public class Travel {
 	     
 	     
 	    
-	     public Travel(String expense, String vendor, long amount,String description) {
+	     public Travel(String expense, String vendor, Double amount,String description) {
 			this.expense = expense;
 			this.vendor = vendor;
 			this.amount = amount;
@@ -109,13 +109,13 @@ public class Travel {
 
 
 
-			public long getAmount() {
+			public Double getAmount() {
 				return amount;
 			}
 
 
 
-			public void setAmount(long amount) {
+			public void setAmount(Double amount) {
 				this.amount = amount;
 			}
 

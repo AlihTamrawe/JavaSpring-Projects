@@ -49,7 +49,6 @@ public class TravelService {
         	Travel b = optionalTravel.get();
         	b.setExpense(expense);
         	
-
         	travelRepository.save(b);
 
             return "Successful";
@@ -105,7 +104,7 @@ public class TravelService {
 
        if(optionalTravel.isPresent()) {
     	   Travel b = optionalTravel.get();
-       	b.setAmount(l);
+       
        	travelRepository.save(b);
            return "Successful Amount";
 
@@ -117,6 +116,23 @@ public class TravelService {
        }
        
    }
+    public Travel Updated(Long id,Travel travel)  throws IOException{
+    	 Optional<Travel> optionalTravel = travelRepository.findById(id);
+
+    	  optionalTravel.get().setAmount(travel.getAmount());
+    	  optionalTravel.get().setDescription(travel.getDescription());
+    	  optionalTravel.get().setExpense(travel.getExpense());
+    	  optionalTravel.get().setVendor(travel.getVendor());
+
+    	 
+          return  travelRepository.save(optionalTravel.get());
+
+
+     
+      
+  }
+ 
+    
     public void deleteBook(long id) {
     	travelRepository.deleteById(id);;
     	

@@ -42,8 +42,8 @@
       <td><a href="/Expense/${travel.getId()}"><c:out value="${travel.getExpense()}"></c:out></a></td>
       <td><c:out value="${travel.getDescription()}"></c:out> </td>
       <td><c:out value="${travel.getVendor()}"></c:out></td>
-      <td><c:out value="${travel.getAmount()}"></c:out>$</td>
-      <td><a href="/Expense/${travel.getId()}/edit">Edit</a></td>
+      <td><c:out value="${travel.amount}"></c:out>$</td>
+      <td><a href="/Expense/${travel.id}/edit">Edit</a></td>
       <td>
 <form action="/Expense/${travel.getId()}" method="post">
     <input type="hidden" name="_method" value="delete">
@@ -83,7 +83,7 @@
     <p>
         <form:label path="amount">Amount</form:label>
         <form:errors path="amount" class="text-danger"/>     
-        <form:input type="number" path="amount"/>
+        <form:input  path="amount"/>
     </p>    
     <input class="btn btn-primary " type="submit" value="Submit"/>
 </form:form>
