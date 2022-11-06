@@ -20,9 +20,8 @@
 		
 		
 <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" >
- <div>
- 	<h1>Save Travels</h1>
- </div>
+ 
+ 
 <table class="table table-bordered table-striped">
   <thead class="thead-dark">
     <tr>
@@ -31,6 +30,8 @@
       <th scope="col">Description</th>
       <th scope="col">Vendor</th>
       <th scope="col">Amount</th>
+      <th scope="col">Editing Field</th>
+      
       
     </tr>
   </thead>
@@ -42,15 +43,16 @@
       <td><c:out value="${travel.getDescription()}"></c:out> </td>
       <td><c:out value="${travel.getVendor()}"></c:out></td>
       <td><c:out value="${travel.getAmount()}"></c:out>$</td>
+      <td><a href="/Travel/${travel.getId()}/edit">Edit</a></td>
       
     </tr>
-    </tbody>
     </c:forEach>
+    </tbody>
+    
     </table>
     
     
    
-	</main>
 	
 	 <div>
  	<h1>Add an  Expense</h1>
@@ -79,6 +81,7 @@
     </p>    
     <input type="submit" value="Submit"/>
 </form:form>    
+ 	</main>
  
 </body>
 </html>

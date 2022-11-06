@@ -95,19 +95,19 @@ public class TravelService {
 
        } else {
        	
-       	return "Failed setNumberOfPages";
+       	return "Failed Vendor";
 
        }
        
    }
-    public String Updatedamount(Long id,int amount)  throws IOException{
+    public String Updatedamount(Long id,long l)  throws IOException{
      	 Optional<Travel> optionalTravel = travelRepository.findById(id);
 
        if(optionalTravel.isPresent()) {
     	   Travel b = optionalTravel.get();
-       	b.setAmount(amount);
+       	b.setAmount(l);
        	travelRepository.save(b);
-           return "Successful setNumberOfPages";
+           return "Successful Amount";
 
 
        } else {
@@ -117,5 +117,10 @@ public class TravelService {
        }
        
    }
+//    public String Updateall(Travel travel) throws IOException {
+//    	return this.Updatedamount(travel.getId(), travel.getAmount())+this.Updateddesc(travel.getId(), travel.getDescription())+this.Updatedexpense(travel.getId(), travel.getExpense())+this.Updatedvendor(travel.getId(),travel.getVendor());
+//    	
+//    	
+//    }
     
 }
