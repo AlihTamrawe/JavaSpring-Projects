@@ -29,7 +29,7 @@ public class Travel {
 	    @Size(min = 5, max = 200, message="expense must be at least 5 characters.")
 	    private String expense;
 	 	
-	 	
+	 	@NotNull
 	 	@Size(min = 3, max = 40, message="vendor must be at least 3 characters.")
 	    private String vendor;
 	 	

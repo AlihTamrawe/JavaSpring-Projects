@@ -10,6 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -60,7 +61,7 @@ public class TravelController {
 
          
          }
-	  @GetMapping("/Travel/{id}/edit")
+	  @GetMapping("/Expense/{id}/edit")
 	    public String edit(@PathVariable("id") Long id, Model model) {
 	        Travel tra = travelService.findTravel(id);
 	        model.addAttribute("travel", tra);
@@ -69,15 +70,16 @@ public class TravelController {
 	
 	 @PutMapping("/Expense/edit/{id}")
     public String editTravel(Model model,@Valid @ModelAttribute("travel") Travel travel,BindingResult result,@PathVariable("id") Long id) throws IOException   {
-		 
-		   Travel expensee = travelService.findTravel(id);
 	        model.addAttribute("travel",travel);
+		  
          if (result.hasErrors()) {
+        	
              return "/Travel/edit.jsp";
          } else {
-             travelService.Updatedamount(id, travel.getAmount());
-             travelService.Updateddesc(id, travel.getDescription());
+          
              travelService.Updatedexpense(id, travel.getExpense());
+             travelService.Updateddesc(id, travel.getDescription());
+             travelService.Updatedamount(id, travel.getAmount());
              travelService.Updatedvendor(id, travel.getVendor());
              return "redirect:/Expense/New";
          }   
@@ -85,7 +87,17 @@ public class TravelController {
 
          
          }
-
-    
+	 @DeleteMapping("/Expense/{id}")
+	    public String destroy(@PathVariable("id") Long id) {
+	        travelService.deleteBook(id);
+	        return "redirect:/Expense/New";
+	    }
+	 @GetMapping("/Expense/{id}")
+	 public String show(Model model,@PathVariable("id") Long id) {
+		 
+		   Travel expensee = travelService.findTravel(id);
+	        model.addAttribute("travel",expensee);
+	        return "/Travel/show.jsp";
+	    }
 
 }

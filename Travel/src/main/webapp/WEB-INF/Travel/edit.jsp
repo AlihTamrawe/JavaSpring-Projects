@@ -11,9 +11,12 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Edit the Expense</title>
+        <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
+
 </head>
 <body>
 		<h1>Edit Book</h1>
+		<main>
 <form:form action="/Expense/edit/${travel.getId()}" method="put" modelAttribute="travel">
     <input type="hidden" name="_method" value="put">
     <p>
@@ -34,9 +37,13 @@
     <p>
         <form:label path="amount">amount</form:label>
         <form:errors path="amount"/>     
-        <form:input type="number" path="amount"/>
-    </p>    
-    <input type="submit" value="Submit"/>
+        <form:input type="number" path="amount" />
+    </p>   
+    <input class="btn btn-primary " type="submit" value="Submit"/>
 </form:form>
+</main>
+	<form class="form " action="/Expense/New" >
+			   			 	<button class="btn btn-primary ">Back</button>
+			    	</form>
 </body>
 </html>

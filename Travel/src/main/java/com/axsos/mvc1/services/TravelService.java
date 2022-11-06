@@ -57,7 +57,7 @@ public class TravelService {
 
         } else {
         	
-        	return "Failed";
+           	return "F";
 
         }
         
@@ -76,7 +76,7 @@ public class TravelService {
 
        } else {
        	
-       	return "Failed";
+          	return "F";
 
        }
        
@@ -95,7 +95,7 @@ public class TravelService {
 
        } else {
        	
-       	return "Failed Vendor";
+       	return "F";
 
        }
        
@@ -112,15 +112,16 @@ public class TravelService {
 
        } else {
        	
-       	return "Failed setNumberOfPages";
+          	return "F";
 
        }
        
    }
-//    public String Updateall(Travel travel) throws IOException {
-//    	return this.Updatedamount(travel.getId(), travel.getAmount())+this.Updateddesc(travel.getId(), travel.getDescription())+this.Updatedexpense(travel.getId(), travel.getExpense())+this.Updatedvendor(travel.getId(),travel.getVendor());
-//    	
-//    	
-//    }
+    public void deleteBook(long id) {
+    	travelRepository.deleteById(id);;
+    	
+    	
+    }
+
     
 }
