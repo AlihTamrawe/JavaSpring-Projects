@@ -1,0 +1,16 @@
+@charset "ISO-8859-1";
+
+
+
+.main-cont{
+    position: absolute;
+    display: flex;
+    margin: auto;
+    width: 100%;
+    height: 170%;
+    font-size: 30px;
+    padding: 80px;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
