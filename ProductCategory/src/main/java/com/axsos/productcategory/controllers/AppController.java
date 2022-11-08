@@ -1,6 +1,5 @@
 package com.axsos.productcategory.controllers;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -97,15 +96,14 @@ public class AppController {
 		model.addAttribute("category",appService.findCategory(id));
 		List<Product> l1 =  appService.findCategory(id).getProducts();
 		List<Product> l3 =  appService.allProduct();
-		int c=0;
-		for(Product cat:l3) {
-			if( l1.contains(cat)) {
-				l3.remove(cat);
+		for(Product pro:l3) {
+			if( l1.contains(pro)) {
+				l3.remove(pro);
 			}
-			c++;
 		}
 		
-		model.addAttribute("products",l3);
+		
+		model.addAttribute("products", l3);
 		
 		return "/category/categorynew.jsp";
 
@@ -118,7 +116,7 @@ public class AppController {
 	}
 	@PostMapping("/product/cat")
 	public String categroytoProduct(@RequestParam("pro")Long id1,@RequestParam("cat")Long id2) {
-	  appService.addcategorytoprod(id2, id1);
+	  appService.addcategorytoprod(id1, id2);
 		return "redirect:/";
 
 	}

@@ -25,16 +25,16 @@
 		
 		<ul>
 			<c:forEach var="producte" items="${category.products}">
-				<li><c:out value="${producte.name}"></c:out><c:out value="${producte.price}"></c:out></li>
+				<li><c:out value="${producte.name}"></c:out><c:out value="${product.price}"></c:out></li>
 			</c:forEach>
 		</ul>
 <div class="Roller"></div>
-<form action="/category/prod">
+<form action="/category/prod"  method="post">
 <input type="hidden" name="cat" value="${category.id}">
 
 <select name="pro">
-<c:forEach var="product"  items="${products}">
-<option value="${ product.id}"></option>
+<c:forEach var="product2"  items="${products}">
+<option value="${ product2.id}"><c:out value="${product2.name }"></c:out></option>
 </c:forEach>
 </select>
 <input type="submit" value="add">

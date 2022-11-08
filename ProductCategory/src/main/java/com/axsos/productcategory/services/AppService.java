@@ -75,14 +75,14 @@ public class AppService {
 	    	categoryRepository.save(category);
 	    	return "added";
 	    }
-	    public List<Category> categoryinproduct(Long id)  {
-	    	return 	 productRepository.findBycategoriesNotContains(findProduct(id));
-
-	    }
-	    public List<Product> productincategory(Long id)  {
-	    	return 	 categoryRepository.findByproductsContains(findCategory(id));
-
-	    }
-	
+//	    public List<Category> categoryinproduct(Long id)  {
+//	    	return 	 productRepository.findBycategoriesNotContains(findProduct(id));
+//
+//	    }
+//	    public List<Product> productincategory(Long id)  {
+//	    	return 	 categoryRepository.findByproductsNotContains(fin);
+//
+//	    }
+//	
 
 }
