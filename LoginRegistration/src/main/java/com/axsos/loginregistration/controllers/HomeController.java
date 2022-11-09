@@ -80,7 +80,7 @@ public class HomeController {
 	        }
 	        else {
 	        User user = userServ.login(newLogin, result);
-	        	session.setAttribute("email", user.getEmail());
+	        	session.setAttribute("id", user.getEmail());
 	        	session.setAttribute("islogin", true);
 	        	return "redirect:/home";
 
