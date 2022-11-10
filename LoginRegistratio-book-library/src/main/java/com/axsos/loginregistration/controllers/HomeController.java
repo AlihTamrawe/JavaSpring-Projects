@@ -108,6 +108,13 @@ public class HomeController {
 	    }
 	    @GetMapping("/books")
 	    public String home(Model model,HttpSession session) {
+	    	
+	    	 if((boolean) session.getAttribute("islogin")) {
+		        	if(session.getId()=="id") {
+		    	        return "redirect:/books";
+
+		        	}
+		        }
         	System.out.println(session.getAttribute("id"));
 
 	    	if((!(boolean)session.getAttribute("islogin"))&&session.getAttribute("id")==null ){
@@ -130,6 +137,12 @@ public class HomeController {
 	    }
 	    @GetMapping("/books/new")
 	    public String gotonew(HttpSession session,Model model,	@ModelAttribute("book")Book book) {
+	    	 if((boolean) session.getAttribute("islogin")) {
+		        	if(session.getId()=="id") {
+		    	        return "redirect:/books";
+
+		        	}
+		        }
         	System.out.println(session.getAttribute("id"));
 
 	    	return "/book/book.jsp";
@@ -152,20 +165,36 @@ public class HomeController {
         	System.out.println(user.getUserName());
         	book.setUser(user);
 	    	Book book2=userServ.createBook(book);
-//	    	userServ.AddBooktouser(book2, user);
 	    	
-	    	return "redirect:/books/"+book2.getId()+"/";
+	    	return "redirect:/books/"+book2.getId();
 	    }
 	    @GetMapping("/books/{id}")
 	    public String showBook(@PathVariable("id") Long id,  Model model,HttpSession session)  {
+	    	 if((boolean) session.getAttribute("islogin")) {
+		        	if(session.getId()=="id") {
+		    	        return "redirect:/books";
+
+		        	}
+		        }
+
+	        	Object id2 = session.getAttribute("id");
+	        	Long i = (Long) id2;
+	        	
+	        	System.out.println(i);
+	        	User user=userServ.find(i);
 	    	
-	    	Book book = userServ.findBook(id);
-	    	model.addAttribute("book", book);
+	    		Book book = userServ.findBook(id);
+	    		model.addAttribute("book", book);
+	        	if(book.getUser().getId()==user.getId())
+	        	{
+	        		
+	        		model.addAttribute("flag", 1);
+	        	}else {
+        		model.addAttribute("flag", 0);}
+
+
 		    	return "/book/showbook.jsp";
 
-	    		
-	    	
-	    	
 	    }
 	    
 	    @GetMapping("/logout")
@@ -176,6 +205,51 @@ public class HomeController {
 
 
 	    	return "redirect:/";
+	    }
+	    
+	    @GetMapping("/books/edit/{id}")
+	    public String editBook(@PathVariable("id") Long id,  Model model,HttpSession session)  {
+	    	 if((boolean) session.getAttribute("islogin")) {
+		        	if(session.getId()=="id") {
+		    	        return "redirect:/books";
+
+		        	}
+		        }
+	    	 Book book1=userServ.findBook(id);
+	    	 model.addAttribute("book",book1 );
+	    		Object id2 = session.getAttribute("id");
+	        	Long i = (Long) id2;
+	        	
+	        	System.out.println(i);
+	        	User user=userServ.find(i);
+	        	model.addAttribute("user", user);
+	    	 
+	    	 
+	    	
+	    		
+		    	return "/book/editbook.jsp";
+
+	    }
+	    
+	    
+	    @PostMapping("/books/edit/{id}/edit")
+	    public String puteditbook(@PathVariable("id") Long id,@Valid @ModelAttribute("book") Book book, BindingResult result) throws IOException {
+	    	
+	    	if(result.hasErrors()) {
+		    	return "/book/editbook.jsp";
+ 
+	    	}
+	    	
+	    	userServ.UpdatedBook(id, book);
+	    	
+	    	return "redirect:/books/"+id;
+	    	
+	    	
+	    }
+	    @PostMapping("/delete/{id}")
+	    public String deletebook(@PathVariable("id") Long id) {
+	    	userServ.deletebook(id);
+	    	return "redirect:/books";
 	    }
 	    
 }

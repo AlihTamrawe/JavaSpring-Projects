@@ -31,9 +31,10 @@
 	<p> <c:out value="${book.thoughts }"></c:out></p>
 	</div>
 	<div class="lin"></div>
-	
-	<a href="#">edit</a>
-	<a href="#">delete</a>
+    <c:if test="${flag==1}">
+	<a href="/books/edit/${book.id}">edit</a>
+	<a href="/delete/${book.id}">delete</a>
+	</c:if>
 </div>
 
 

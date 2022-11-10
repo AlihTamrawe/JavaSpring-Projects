@@ -122,4 +122,28 @@ public class UserService {
     	
 
     }
+    
+    public Book UpdatedBook(Long id,Book book)  throws IOException{
+    	Book book1 = bookRepository.findById(id).get();
+    	book1.setTitle(book.getTitle());
+    	book1.setAuthor(book.getAuthor());
+    	book1.setThoughts(book.getThoughts());
+   	 
+         return  bookRepository.save(book1);
+
+
+    
+     
+ }
+    public void deletebook(Long id) {
+    	Book book1 = bookRepository.findById(id).get();
+    	
+   	 
+           bookRepository.delete(book1);
+
+
+    
+     
+ }
+
 }
