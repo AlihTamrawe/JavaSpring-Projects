@@ -162,18 +162,6 @@ public class UserService {
     }
  public void undoborrowbook(Book  br,User user) {
 
-//  	List<Book> borrowbook = user.getBorrowBooks();
-//  	int count =0 ;
-//  	for(Book b:borrowbook) {
-//  		
-//  		if(b.getId()==br.getId()) {
-//  		break;
-//  		}
-//  		count++;
-//  	}
-//  	borrowbook.remove(count);
-//  	user.setBorrowBooks(borrowbook);  
-//  	userRepo.save(user);
 	 	User user2=null;
 		br.setBorrower(user2);
 		

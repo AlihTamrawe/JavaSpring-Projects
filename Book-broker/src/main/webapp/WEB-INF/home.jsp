@@ -40,7 +40,21 @@
       <th ><a href="/books/${book.id}"><c:out value="${book.title}"></c:out></a></th>
 	      <td><c:out value="${book.author}"></c:out> </td>
 	      <td><c:out value="${book.user.userName}"></c:out></td>
-	      	      <td><a href="/books/borrow/${book.id}">Borrow </a></td>
+	      <%int x=0; %>
+	     <c:forEach var="b1" items="${user.books}">
+	     <c:choose>
+	     <c:when test="${book.id== b1.id}">
+	     	      	      <td><a href="/books/delete/${book.id}">delete </a><a href="/books/edit/${book.id}">edit </a></td>
+	     <%x=1; %>
+	      	      </c:when>
+	     
+	     
+	      	      </c:choose>
+	      	      
+	      	      </c:forEach>
+	      	      <%if(x==0) {%>
+	      	      	     	      	      <td><a href="/books/borrow/${book.id}">Borrow </a></td>
+	      	      <%} %>
 	      
     </tr>
     </c:forEach>

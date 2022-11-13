@@ -123,18 +123,30 @@ public class HomeController {
 	    		
 	    	}
 	    	User user = userServ.find((Long)session.getAttribute("id"));
+	    	
+	    	
 	    	if(user!=null) {
+	    		
 	    	model.addAttribute("user", user);
+	    	
 	    	List<Book> all = userServ.allBook();
-	    	int c=0;
 	    	if(user.getBorrowBooks().size()>0)
-	    	for(int i =0;i<all.size()-1;i++) {
-	    		if(all.get(i).getId()==user.getBorrowBooks().get(c).getId()) {
+	    	for(int i =0;i<all.size();i++) {
+	    		for(int c =0; user.getBorrowBooks().size()-1>c;c++)
+	    		if(all.get(i)==user.getBorrowBooks().get(c)) {
 	    			all.remove(i);
+	    			
 	    		}
-	    		c++;
+	    		
+
 	    	}
+	    
+	    	
+	    	
+	    	
 	    	model.addAttribute("Books", all);
+
+
 	        return "home.jsp";
 	    	}
 	        return "home.jsp";
@@ -271,7 +283,7 @@ public class HomeController {
         	
            	userServ.borrowbook(book, user);
 	    	
-           	model.addAttribute("user", user);
+//           	model.addAttribute("user", user);
 	    	
 	    	return "redirect:/books";
 	    }
@@ -286,7 +298,7 @@ public class HomeController {
         	User user=userServ.find(i);
         	userServ.undoborrowbook(book, user);
          	
-           	model.addAttribute("user", user);
+//           	model.addAttribute("user", user);
 
 	    	
 	    	
