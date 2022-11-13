@@ -3,6 +3,7 @@ package com.axsos.loginregistration.repositories;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
@@ -20,7 +21,9 @@ public interface BookRepository  extends CrudRepository<Book,Long>{
     Optional<Book> findById(Long id);
     
     Long countBytitleContaining(String search);
-
+    
+    @Query("select b from Book b where b.borrower IS NULL")
+    List<Book> findbooksnotborrow();
 
 	
 }

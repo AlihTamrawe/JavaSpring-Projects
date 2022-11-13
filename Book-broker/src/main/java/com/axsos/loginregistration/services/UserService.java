@@ -171,10 +171,12 @@ public class UserService {
   	
  }
     
-// public void findborrow(User user) {
-//	 
-////	 borrowRepository.findById()
-// }
+ 
+ public List<Book> findbookotborrow() {
+	
+	 	return bookRepository.findbooksnotborrow();
+	 	
+}
  
 
 }

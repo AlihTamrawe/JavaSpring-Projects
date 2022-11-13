@@ -140,11 +140,13 @@ public class HomeController {
 	    		
 
 	    	}
+	    	
 	    
 	    	
+//	    	List<Book> all = userServ.allBook();
+
 	    	
-	    	
-	    	model.addAttribute("Books", all);
+	    	model.addAttribute("Books", userServ.findbookotborrow());
 
 
 	        return "home.jsp";
