@@ -1,0 +1,70 @@
+@charset "ISO-8859-1";
+.Roller{
+	
+	width:90% ;
+    height: 3px;
+    border-radius: 2%;
+    margin: auto 0;
+    border: 1px solid black;
+    background-color: rgba(53, 49, 49,0.2);
+    
+}
+.cont{
+    position: fixed;
+    display: flex;
+    width: 100%;
+    height: 90%;
+    margin: auto 0;
+    padding: 20px;
+    border: 1.5px solid rgba(53, 49, 49,0.2);
+    flex-direction: column;
+    justify-content: space-evenly;
+
+}
+.reg{
+    position: relative;
+    display: grid;
+    width: 80%;
+    height: 80%;
+    margin: auto;
+    align-items: flex-start;
+    
+        border: 2px solid black;
+    box-shadow: 2px 2px gray;
+     border: 2px solid black;
+    border-top: 0px solid black;
+
+
+}
+.log{
+    position: relative;
+    display: grid;
+    width: 50%;
+    height: 80%;
+        margin: auto;
+    
+     border: 2px solid black;
+    box-shadow: 2px 2px gray;
+     border: 2px solid black;
+    border-top: 0px solid black;
+
+}
+    
+    
+
+.lin{
+    position: relative;
+    display: flex;
+    width: 80%;
+    height: 2.5px;
+    justify-self: center;
+    background-color:black;
+    
+    
+}
+.wordup{
+	position:relative;
+	top:20px;
+	left:20px;
+}
+
